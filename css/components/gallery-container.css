@@ -1,0 +1,22 @@
+/* .grid-container {
+    background-color: var(--clr1);
+    height: 300px;
+    width: max-content;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    grid-auto-rows: 16vw;
+} */
+
+.grid-container {
+    width: fit-content;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5vw;
+    margin: auto;
+}
+
+img {
+    object-fit:contain;
+    width: 16rem;
+}
+.upload-img{
+    background-color: rgb(155, 157, 158);
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Meme</title>
+</head>
+
+<body onload="init()">
+    <div class="main-screen"></div>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="main-logo"><img src="icons/logo.png" alt="" srcset=""></div>
+            <nav class="main-nav">
+                <span class="gallery-nav">Gallery</span>
+                <span class="about-nav">About</span>
+                <span class="memes-nav">Memes</span>
+            </nav>
+        </div>
+    </header>
+
+    <section class="searching-container">
+        <canvas class="canvas-container"></canvas>
+        <input type="text">
+        <div class="title-filter"></div>
+    </section>
+    <div class="box-editor"></div>
+    <main class="gallery-container">
+        <div class="grid-container grid">
+            <!--<div class="img upload-img">Upload img</div>
+            <div class="img img-1"><img src="img/1.jpg" alt=""></div>
+            <div class="img img-2"><img src="img/2.jpg" alt=""></div>
+            <div class="img img-3"><img src="img/3.jpg" alt=""></div>
+            <div class="img img-4"><img src="img/4.jpg" alt=""></div>
+            <div class="img img-5"><img src="img/5.jpg" alt=""></div>
+            <div class="img img-6"><img src="img/6.jpg" alt=""></div>
+            <div class="img img-7"><img src="img/7.jpg" alt=""></div>
+            <div class="img img-8"><img src="img/8.jpg" alt=""></div>
+            <div class="img img-9"><img src="img/9.jpg" alt=""></div>
+            <div class="img img-10"><img src="img/10.jpg" alt=""></div>
+            <div class="img img-11"><img src="img/11.jpg" alt=""></div>
+            <div class="img img-12"><img src="img/12.jpg" alt=""></div>
+            <div class="img img-13"><img src="img/13.jpg" alt=""></div>
+            <div class="img img-14"><img src="img/14.jpg" alt=""></div>
+            <div class="img img-15"><img src="img/15.jpg" alt=""></div>
+            <div class="img img-16"><img src="img/16.jpg" alt=""></div>
+            <div class="img img-17"><img src="img/17.jpg" alt=""></div>
+            <div class="img img-18"><img src="img/18.jpg" alt=""></div>
+ -->
+        </div>
+    </main>
+
+    <aside class="info-container">
+        <!-- <img src="img/10.jpg" alt=""> -->
+    </aside>
+
+    <footer class="footer-container">
+        <img src="icons/logo.png" alt="">
+    </footer>
+</body>
+<script src="js/meme-controller.js"></script>
+<script src="js/services/upload-service.js"></script>
+<script src="js/services/storage-service.js"></script>
+<script src="js/services/meme-service.js"></script>
+
+</html>
