@@ -1,6 +1,7 @@
-/* SETUP  */
+/* SETUP */
 @import 'setup/vars.css';
 @import 'setup/typography.css';
+
 
 
 /* BASE */
@@ -12,10 +13,4 @@
 /* COMPONENTS */
 @import 'components/main-header.css';
 @import 'components/gallery-container.css';
-@import 'components/searching-container.css';
-@import 'components/info-container.css';
-@import 'components/footer-container.css';
-
-
-/* Media Queries */
-@import 'mq/mq.css';
+@import 'components/editor-container.css';

@@ -6,65 +6,75 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Meme</title>
+    <title>Document</title>
 </head>
+<img src="" alt="">
 
 <body onload="init()">
     <div class="main-screen"></div>
-
-    <header class="main-header">
-        <div class="header-content">
-            <div class="main-logo"><img src="icons/logo.png" alt="" srcset=""></div>
-            <nav class="main-nav">
-                <span class="gallery-nav">Gallery</span>
-                <span class="about-nav">About</span>
-                <span class="memes-nav">Memes</span>
+    <header class="main-header flex align-center">
+        <div class="header-contant main-layout flex space-between">
+            <div class="main-logo flex" onclick="onShowGallery()">GetMeme.</div>
+            <nav class="main-nav flex">
+                <button onclick="onShowGallery()"><a href="#">Gallery</a></button>
+                <button><a href="#">About</a></button>
+                <button><a href="#">Saved</a></button>
             </nav>
         </div>
     </header>
+    <div class="search-container">
+        <!--  <input type="text" placeholder="Enter search keyword"> -->
 
-    <section class="searching-container">
-        <canvas class="canvas-container"></canvas>
-        <input type="text">
-        <div class="title-filter"></div>
-    </section>
-    <div class="box-editor"></div>
-    <main class="gallery-container">
-        <div class="grid-container grid">
-            <!--<div class="img upload-img">Upload img</div>
-            <div class="img img-1"><img src="img/1.jpg" alt=""></div>
-            <div class="img img-2"><img src="img/2.jpg" alt=""></div>
-            <div class="img img-3"><img src="img/3.jpg" alt=""></div>
-            <div class="img img-4"><img src="img/4.jpg" alt=""></div>
-            <div class="img img-5"><img src="img/5.jpg" alt=""></div>
-            <div class="img img-6"><img src="img/6.jpg" alt=""></div>
-            <div class="img img-7"><img src="img/7.jpg" alt=""></div>
-            <div class="img img-8"><img src="img/8.jpg" alt=""></div>
-            <div class="img img-9"><img src="img/9.jpg" alt=""></div>
-            <div class="img img-10"><img src="img/10.jpg" alt=""></div>
-            <div class="img img-11"><img src="img/11.jpg" alt=""></div>
-            <div class="img img-12"><img src="img/12.jpg" alt=""></div>
-            <div class="img img-13"><img src="img/13.jpg" alt=""></div>
-            <div class="img img-14"><img src="img/14.jpg" alt=""></div>
-            <div class="img img-15"><img src="img/15.jpg" alt=""></div>
-            <div class="img img-16"><img src="img/16.jpg" alt=""></div>
-            <div class="img img-17"><img src="img/17.jpg" alt=""></div>
-            <div class="img img-18"><img src="img/18.jpg" alt=""></div>
- -->
+        <div class="keywords-container"></div>
+    </div>
+    <main class="main-content main-layout">
+        <div class="gallery-container main-layout grid">
+
         </div>
     </main>
+    <div class="info-conteiner">
 
-    <aside class="info-container">
-        <!-- <img src="img/10.jpg" alt=""> -->
-    </aside>
-
-    <footer class="footer-container">
-        <img src="icons/logo.png" alt="">
+    </div>
+    <footer>
+        <div class="footer-logo"></div>
     </footer>
+
+    <!-- editor area -->
+    <div class="editor-container flex space-between main-layout">
+        <div class="canvas-container justify-content  align-center ">
+            <canvas id="myCanvas" class="justify-content flex " width="500" height="500"
+                style="border: 1px solid black; display: none;">
+            </canvas>
+        </div>
+        <div class="editor-tools " style="display: none;">
+            <input class="line-input" type="text" oninput="onInputText(this.value)" placeholder="Enter your text here">
+            <div class="line-editor">
+                <button><i class="fa-solid fa-up-long"></i></button>
+                <button><i class="fa-solid fa-down-long"></i></button>
+                <button>
+                    <i class="fa-solid fa-up-long"></i>
+                    <i class="fa-solid fa-down-long"></i>
+                </button>
+                <button onclick=" onAddLine()"><i class="fa-solid fa-plus"></i></button>
+                <button onclick="onDeleteLine()"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            <div class="text-editor">
+                <button>A+</button>
+                <!-- onclick="onChangeFontSize(-10)" -->
+                <button>A-</button>
+                <button><i class="fa-solid fa-align-left"></i></button>
+                <button><i class="fa-solid fa-align-justify"></i></button>
+                <button><i class="fa-solid fa-align-right"></i></button>
+            </div>
+            <div>
+                <input type="color" class="color-input" onchange="renderMeme()">
+            </div>
+        </div>
+    </div>
 </body>
+<script src="https://kit.fontawesome.com/fe6ae7baff.js" crossorigin="anonymous"></script>
+<script src="js/meme-services.js"></script>
+<script src="js/gallery-controller.js"></script>
 <script src="js/meme-controller.js"></script>
-<script src="js/services/upload-service.js"></script>
-<script src="js/services/storage-service.js"></script>
-<script src="js/services/meme-service.js"></script>
 
 </html>

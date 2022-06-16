@@ -1,0 +1,22 @@
+.editor-tools{
+    width: 700px;
+    height: 700px;
+    flex-direction: column;
+    justify-content:center;
+    flex-grow: 1;
+
+}
+.line-input{
+    width: 16.5rem;
+}
+.canvas-container{
+    flex-grow: 1;
+    margin-top: 3rem;
+    margin-left: 9rem;
+}
+.editor-tools button{
+    height: 50px;
+    width: 50px;
+    object-fit:fill;
+    font-size: 22px;
+}

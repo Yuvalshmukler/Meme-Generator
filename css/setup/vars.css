@@ -1,4 +1,4 @@
 :root {
-    /* main-conatin */
-    --clr1: #e3e3e3;
+    --var1: #cbcaf0;
+    --var2: linear-gradient(115deg, #bd6bb9 0, #d68dd6 50%, #dc8de9 100%)
 }
