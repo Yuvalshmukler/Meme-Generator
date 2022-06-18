@@ -3,10 +3,13 @@
         width: 100%;
         padding: 1.25rem;
     }
-
+    body{
+        background-image: var(--var1);
+    }
     .main-header {
-        width: 100%;
+        width: 90%;
         z-index: 5;
+        border: 1px solid var(--var3);
     }
 
     .main-nav {
@@ -45,13 +48,15 @@
 
     .gallery-container {
         display: grid;
-        max-width: 70vw;
+        background-image: none;
+        background-repeat: no-repeat;
+        /* max-width: 70vw; */
         row-gap: 0;
         margin: auto;
         gap: 1rem;
         transition: transform 0.6s;
-        grid-template-rows: repeat(auto-fit, minmax(10rem, 1fr));
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+        grid-template-rows: repeat(2, minmax(10rem, 1fr));
+        grid-template-columns: repeat(2, minmax(10rem, 1fr));
     }
 
     .gallery-container img {
