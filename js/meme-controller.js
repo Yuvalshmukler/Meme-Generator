@@ -13,6 +13,7 @@ function init() {
     addListeners()
     addMouseListeners()
     renderImgs()
+    
 }
 function updatePlaceholder() { ///later
     var elInput = document.querySelector('.line-input')
@@ -70,8 +71,21 @@ function drawText(line) {
     gCtx.font = `${line.fontSize}px ${line.font}`
     gCtx.fillText(`${line.text}`, `${line.pos.x}`, `${line.pos.y}`)
     gCtx.strokeText(`${line.text}`, `${line.pos.x}`, `${line.pos.y}`)
+    drawLineArea()
 
 }
+
+
+function drawLineArea() {
+    if (!getLineArea()) return;
+    var lineArea = getLineArea();
+    gCtx.beginPath();
+    gCtx.strokeStyle = 'red';
+    gCtx.rect(lineArea.x, lineArea.y, lineArea.width, lineArea.height);
+    gCtx.stroke();
+}
+
+
 function onAlignLeft() {
     setElignLeft()
     renderMeme()
@@ -146,7 +160,7 @@ function addTouchListeners() {
 function onDown(ev) {
     //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
-    console.log(pos)
+    /*  console.log(pos) */
     /* if (!isLineClicked(pos)) return */
     console.log('hi');
     setLineDrag(true)
@@ -165,13 +179,13 @@ function moveLine(dx, dy) {
 
 ///////////////////////////////////
 function onMove(ev) {
-    console.log('hiiiiii');
-   /*  const LINE = getLine(); */
+
+    /*  const LINE = getLine(); */
     const pos = getEvPos(ev)
     //Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
-    console.log('gStartPos',gStartPos);
+    console.log('gStartPos', gStartPos);
     moveLine(dx, dy)
     //Save the last pos , we remember where we`ve been and move accordingly
     gStartPos = pos

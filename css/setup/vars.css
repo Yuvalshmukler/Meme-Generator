@@ -1,8 +1,10 @@
 :root {
     --var1: linear-gradient(to right, #fcb487, #DD5E89);
+    --var5: linear-gradient(to right, #fcb48791, #dd5e888b);
+    
     --var2: #383838;
     --var3: #313030;
-    --var4: #636161;
+    --var4: #87878745;
 }
 
 

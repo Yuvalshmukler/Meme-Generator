@@ -1,11 +1,11 @@
 .gallery-container {
-    background: linear-gradient(to right, #F7BB97, #DD5E89);
+    background: var( --var4);
     grid-template-columns: repeat(5, 1fr);
     gap: 0.8vw;
     column-gap: 0px;
     margin: auto;
     width: 68rem;
-    padding: 5rem 1.8rem 1.8rem 1.8rem;
+    padding:5rem 8rem 1.8rem 8rem;
     border-radius: 8px;
     
 }
@@ -13,7 +13,17 @@
 .gallery-container img {
     object-fit: contain;
     text-align: center;
-    width: 12rem;
+    width: 10rem;
     border-radius: 5px;
 
+}
+.search-input {
+    background-color: #22252c;
+    border-radius: 29px;
+    width: 33.3%;
+    padding-left: 1rem;
+    margin-right: 1rem;
+    font-size: 1.301875rem;
+    border: none;
+    font-family: poppins-light;
 }

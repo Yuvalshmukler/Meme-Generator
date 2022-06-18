@@ -1,7 +1,7 @@
 var gCanvas = document.getElementById('myCanvas');
 var gCtx = gCanvas.getContext('2d');
-
-var gKeywordSearchCountMap = {}
+/* var gKyes = ['famous','cute','animals','funny','smiley','sleepy'] */
+var gKeywords = {};
 var gImgs = []
 var gMeme = {
     selectedImgId: 3,
@@ -28,10 +28,6 @@ function changeFillColor(color) {
 function changeStrokeColor(color) {
     const line = getSelectedLine()
     line.strokeColor = color
-}
-function deleteLine() { ////later
-    return getSelectedLine()
-
 }
 function deleteLine() {
     if (gMeme.lines.length === 1) return
@@ -66,7 +62,7 @@ function setLineUp() {
     console.log(line.pos);
 }
 
-///CREATING FUNCTION
+
 function createImgs() {
     for (var i = 1; i < 17; i++) {
         var img = { id: i, url: `img/${i}.jpg`, key: null }
@@ -95,9 +91,10 @@ function createImgs() {
          ['famous'] */
     ]
     gImgs.forEach((img, idx) => {
-        img.key = keyWords[idx]
+        img['keywords'] = gKeywords[idx];
     });
 }
+
 
 function addLine() {
     /*  console.log('gMeme.selectedLineIdx',gMeme.selectedLineIdx)*/
@@ -121,6 +118,14 @@ function addLine() {
     gMeme.selectedLineIdx = gMeme.lines.length - 1;
 }
 
+/* function setGKeywords(keywords) {
+    var flattenKeys = flatten(keywords)
+    flattenKeys.map(key => {
+        if (!gKeywordSearchCountMap[`${key}`]) gKeywordSearchCountMap[`${key}`] = 0
+        console.log(gKeywordSearchCountMap);
+    })
+}
+ */
 function getSelectedLine() {
     return gMeme.lines[gMeme.selectedLineIdx]
 }
@@ -163,7 +168,21 @@ function getImg(imgId) {
 function getMeme() {
     return gMeme
 }
+function getLineArea() {
+    if (!gMeme.lines.length) return;
+    var line = gMeme.lines[gMeme.selectedLineIdx];
+    return {
+        x: line.x - 3,
+        y: line.y - line.size + 3,
+        width: line.width + 5,
+        height: line.size + 3,
+    };
+}
 
+
+function getLinePos(idx) {
+    return gMeme.lines[idx]
+}
 /* function getLineClicked(pos) {
     var lineIdx = gMeme.lines.findIndex(line => {
         lineArea.includs(pos)
@@ -207,4 +226,8 @@ function getLine() {
 
 function setLineDrag(isDrag) {
     gMeme.lines[0].isDrag = isDrag
+}
+
+function getKyes() {
+    return gKyes
 }

@@ -2,10 +2,7 @@ function onShowGallery() {
     document.querySelector('.main-content').style.display = 'block'
     document.querySelector('.editor-container').style.display = 'none'
     clearPlaceholder()
-    clearCanvas()
-   
 }
-
 function renderImgs() {
     var imgs = getGImgs()
     var elGalleryContainer = document.querySelector('.gallery-container')

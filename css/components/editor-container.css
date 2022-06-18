@@ -2,11 +2,22 @@
     flex-direction: column;
     justify-content: center;
     background-color: var(--var3);
-    padding: 5rem 7rem;
-    margin-top: 3rem;
     border-radius: 5rem;
     margin-left: 3rem;
+    background-image: var(--var5);
 
+}
+
+.editor-tools .tools {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.7rem;
+}
+
+.font-option {
+    grid-column: span 3;
 }
 
 .editor-container .line-input {
@@ -20,31 +31,29 @@
     color: rgb(254, 254, 254);
     cursor: pointer;
     width: 70%;
-    
+
 }
-.line-editor{
+
+.line-editor {
     border-radius: 1rem;
     background-color: var(--var2);
     padding: 3px;
 }
+
 .editor-container {
     display: none;
     background-color: var(--var1);
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
 
 }
 
 .editor-tools button {
     border: none;
-    width: 75px;
     cursor: pointer;
-
-    border-radius: 4rem;
+    border-radius: 9px;
     font-size: 22px;
-    height: 2.5rem;
-    width: 3.5rem;
-    margin: 4px;
-    object-fit: fill;
+    height: 50px;
+    width: 50px;
     background-color: var(--var4)
 }
 
@@ -60,14 +69,12 @@
 }
 
 input[type='color'] {
-    margin-top: 1rem;
     -webkit-appearance: none;
-    width: 40px;
+    width: 50px;
     border-radius: 3px;
-    height: 30px;
+    height: 50px;
     cursor: pointer;
 }
-
 input[type='color']::-webkit-color-swatch-wrapper {
     padding: 0;
 
@@ -77,3 +84,14 @@ input[type='color']::-webkit-color-swatch {
     border: none;
 
 }
+select {
+    background-color: var(--var4);
+    background-position: right 10px center;
+    background-size: auto 50%;
+    border-radius: 2px;
+    border: none;
+    color: #ffffff;
+    height: 50px;
+    /* padding: 5px 30px 10px 5px; */
+  }
+  
