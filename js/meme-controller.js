@@ -2,6 +2,7 @@
 var gCanvas
 var gCtx
 var gStartPos
+var isUpload = false
 var isImput = false
 const gTouchEvs = ['touchstart', 'touchmove', 'touchend']
 
@@ -13,56 +14,33 @@ function init() {
     addListeners()
     addMouseListeners()
     renderImgs()
-    
 }
 function updatePlaceholder() { ///later
     var elInput = document.querySelector('.line-input')
     if (!isImput) elInput.value = ''
 }
-
 function clearPlaceholder() {
     var elInput = document.querySelector('.line-input')
     elInput.value = ''
 }
-
-/* function clearCanvas() { ///later
-    var meme = getMeme()
-    console.log(meme);
-    meme.lines.forEach(line => {
-        gCtx.clearRect(line.pos.x, line.pos.y, gCanvas.width, gCanvas.height)
-    });
-}
- */
-
 function renderMeme() {
     isImput = false
     var meme = getMeme()
     var img = getImg(meme.selectedImgId)
     var currImg = new Image()
     currImg.src = img.url
-    gCtx.drawImage(currImg, 0, 0)
+    gCanvas.height = (gCanvas.width * currImg.height) / currImg.width
+    gCtx.drawImage(currImg, 0, 0, gCanvas.width, gCanvas.height)
     meme.lines.forEach(line => {
         drawText(line)
     })
+    drawLineArea()
 }
-function onDeleteLine() {
-    clearPlaceholder()
-    deleteLine()
+/* function onUploadImg() {
+    isUpload = true
     renderMeme()
-}
-function onInputText(text) {
-    isImput = true
-    setLineText(text)
-    renderMeme()
-}
-function onSwitchLines() {
-    switchLines()
-    renderMeme()
-}
-function onChangeFontFamily(font) {
-    changeFontFamily(font)
-    renderMeme()
-}
+  }
+ */
 function drawText(line) {
     gCtx.lineWidth = 0;
     gCtx.strokeStyle = line.strokeColor
@@ -71,68 +49,49 @@ function drawText(line) {
     gCtx.font = `${line.fontSize}px ${line.font}`
     gCtx.fillText(`${line.text}`, `${line.pos.x}`, `${line.pos.y}`)
     gCtx.strokeText(`${line.text}`, `${line.pos.x}`, `${line.pos.y}`)
-    drawLineArea()
 
 }
-
-
 function drawLineArea() {
-    if (!getLineArea()) return;
-    var lineArea = getLineArea();
-    gCtx.beginPath();
-    gCtx.strokeStyle = 'red';
-    gCtx.rect(lineArea.x, lineArea.y, lineArea.width, lineArea.height);
-    gCtx.stroke();
+    var lineArea = getLineArea()
+    gCtx.beginPath()
+    gCtx.lineWidth = 2
+    gCtx.strokeStyle = 'white'
+    gCtx.strokeRect(lineArea.x - 5, lineArea.y - lineArea.height + 3, lineArea.width + 5, lineArea.height)
+    gCtx.stroke()
 }
-
-
-function onAlignLeft() {
-    setElignLeft()
-    renderMeme()
+function calcualteTextWidth(line) {
+    gCtx.font = `${line.fontSize}px ${line.font}`
+    const width = gCtx.measureText(line.text).width
+    return width
 }
-function onAlignRight() {
-    setElignRight()
-    renderMeme()
-}
-function onAlignCenter() {
-    setElignCenter()
-    renderMeme()
-}
-function onChangeFillColor(elColor) {
-    /* console.log(elColor)*/
-    changeFillColor(elColor)
-    renderMeme()
-}
-function onChangeStrokeColor(elColor) {
-    changeStrokeColor(elColor)
-    renderMeme()
-}
-function onAddLine() {
-    updatePlaceholder()
-    addLine()
-    renderMeme()
-}
-function onLineUp() {
-    setLineUp()
-    renderMeme()
-}
-function onLineDown() {
-    setLineDown()
-    renderMeme()
-}
-function onChangeFontSize(diff) {
-    changeFontSize(diff)
-    renderMeme()
+function getElImg() {
+    var meme = getMeme()
+    var img = getImg(meme.selectedImgId)
+    var currImg = new Image()
+    currImg.src = img.url
+    return currImg
 }
 function resizeCanvas() {
-    /*  console.log(gCanvas)*/
     var elContainer = document.querySelector('.canvas-container')
-    gCanvas.width = elContainer.offsetWidth
-    gCanvas.height = elContainer.offsetHeight
-
+    let img = getElImg()
+    let height = img.naturalHeight
+    let width = img.naturalWidth
+    if (window.innerWidth < 608) {
+        height = 350
+        width = 350
+    }
+    if (window.innerWidth < 450) {
+        height = 300
+        width = 300
+    }
+    if (window.innerWidth < 380) {
+        height = 220
+        width = 220
+    }
+    gCanvas.width = width
+    gCanvas.height = height
     renderMeme()
 }
-
 
 
 ///LISTENERS
@@ -145,61 +104,47 @@ function addListeners() {
         renderMeme()
     })
 }
-
 function addMouseListeners() {
     gCanvas.addEventListener('mousemove', onMove)
     gCanvas.addEventListener('mousedown', onDown)
-    /* gCanvas.addEventListener('mouseup', onUp) */
+    gCanvas.addEventListener('mouseup', onUp)
 }
-
 function addTouchListeners() {
     gCanvas.addEventListener('touchmove', onMove)
     gCanvas.addEventListener('touchstart', onDown)
-    /*  gCanvas.addEventListener('touchend', onUp) */
+    gCanvas.addEventListener('touchend', onUp)
 }
 function onDown(ev) {
-    //Get the ev pos from mouse or touch
     const pos = getEvPos(ev)
-    /*  console.log(pos) */
-    /* if (!isLineClicked(pos)) return */
-    console.log('hi');
+    const lineIdx = getLineClicked(pos)
+    if (lineIdx === -1) return
+    setSelectedLine(lineIdx)
     setLineDrag(true)
-    //Save the pos we start from 
     gStartPos = pos
     document.body.style.cursor = 'grabbing'
-    onMove(ev)
-
+    renderMeme()
 }
 function moveLine(dx, dy) {
-    console.log('im here');
     gStartPos.x += dx
     gStartPos.y += dy
-
 }
-
-///////////////////////////////////
 function onMove(ev) {
-
-    /*  const LINE = getLine(); */
+    const line = getSelectedLine()
+    if (!line.isDrag) return
     const pos = getEvPos(ev)
-    //Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
-    console.log('gStartPos', gStartPos);
     moveLine(dx, dy)
-    //Save the last pos , we remember where we`ve been and move accordingly
     gStartPos = pos
-    //The canvas is render again after every move
+    line.pos.x += dx
+    line.pos.y += dy
     renderMeme()
-
 }
-
 function onUp() {
-    setCircleDrag(false)
+    setLineDrag(false)
     document.body.style.cursor = 'grab'
 }
 function getEvPos(ev) {
-
     //Gets the offset pos , the default pos
     var pos = {
         x: ev.offsetX,
@@ -219,12 +164,17 @@ function getEvPos(ev) {
     }
     return pos
 }
-
-
+////////////////////////////////////////
 function toggleMenu(elBtn) {
     //if(gIsOpen) return
     var menuBtn = document.querySelector('.menu')
     document.body.classList.toggle('open-menu')
     document.body.classList.contains('open-menu') ? menuBtn.innerText = 'X' : menuBtn.innerText = '☰';
-
+}
+function onDownloadMeme(elLink) {
+    console.log('hi')
+    var imgContent = gCanvas.toDataURL()// image/jpeg the default format
+    /* console.log('hola',imgContent) */
+    elLink.href = imgContent
+    elLink.download = 'My meme'
 }

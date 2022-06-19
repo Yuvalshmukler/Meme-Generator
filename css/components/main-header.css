@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
 .main-header {
     border-radius: 7rem;
     background: var(--var1);
     margin: 1rem 1rem;
     height: 5rem;
     font-family: 'Baloo 2', cursive;
+    -webkit-box-shadow: -1px 6px 16px -3px rgba(39, 37, 37, 0.8);
+    box-shadow: -1px 6px 16px -3px rgba(28, 27, 27, 0.8);
+
 }
 
 .header-contant {
@@ -13,30 +17,38 @@
 }
 
 .main-nav a {
+    font-weight: 400;
     text-decoration: none;
     letter-spacing: 0.1em;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Poppin-bold ;
+
+
 }
+
+ul li:first-child {
+    font-family: poppin-bold;
+}
+
 .main-logo {
-    font-family: lobster;
+    font-family: Poppin;
     font-size: 2.5rem;
-    color: #3d3a3a;
+    color: var(--var3);
+    cursor: pointer;
 }
+
 .main-nav a {
     height: 2rem;
     border: none;
     background-color: unset;
     border-radius: 3rem;
     width: 5rem;
+    color: var(--var5);
 }
 
 .main-header .menu {
     background-color: var(--cr19);
     border: none;
-    color: var(--clr3);
+    color: var(--var5);
     font-size: 1.7rem;
     display: none;
-}
-#myCanvas{
-    border-radius:11px;
 }

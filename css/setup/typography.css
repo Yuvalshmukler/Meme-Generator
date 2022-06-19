@@ -1,7 +1,8 @@
-
 @font-face{
-    font-family: lobster;
-    src: url(/fonts/Lobster-Regular.ttf);
-    
+    font-family: Poppin ;
+    src: url(/fonts/Poppins-Light.ttf);
 }
-
+@font-face{
+    font-family: Poppin-bold ;
+    src: url(/fonts/Poppins-Medium.ttf);
+}

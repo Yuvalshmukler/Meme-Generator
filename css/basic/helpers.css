@@ -1,28 +1,21 @@
 .grid {
     display: grid;
 }
-
 .flex {
     display: flex;
 }
-
 .flex.align-center {
     align-items: center;
 }
-
 .space-between {
     justify-content: space-between;
 }
-
 .align-center {
     text-align: center;
 }
-
 .justify-content {
-
     justify-content: center;
 }
-
 .clean-list {
     margin: 0;
     padding: 0;

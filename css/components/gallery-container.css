@@ -1,21 +1,27 @@
 .gallery-container {
-    background: var( --var4);
+    background: var(--var4);
     grid-template-columns: repeat(5, 1fr);
     gap: 0.8vw;
     column-gap: 0px;
     margin: auto;
     width: 68rem;
-    padding:5rem 8rem 1.8rem 8rem;
+    padding: 5rem;
     border-radius: 8px;
-    
+    -webkit-box-shadow: -1px 4px 19px -8px rgba(0,0,0,0.8); 
+    box-shadow: -1px 4px 19px -8px rgba(0,0,0,0.8);
 }
-
 .gallery-container img {
     object-fit: contain;
     text-align: center;
-    width: 10rem;
-    border-radius: 5px;
-
+    width: 14rem;
+    border-radius: 8px;
+}
+img{
+    cursor: pointer;
+}
+.gallery-container img:hover {
+    opacity: 0.6;
+    transform: translateY(2px)
 }
 .search-input {
     background-color: #22252c;
@@ -26,4 +32,9 @@
     font-size: 1.301875rem;
     border: none;
     font-family: poppins-light;
+}
+.footer-logo{
+    background-image: var(--var1);
+    height: 5rem;
+    margin-top: 18px;
 }

@@ -1,12 +1,8 @@
 :root {
     --var1: linear-gradient(to right, #fcb487, #DD5E89);
-    --var5: linear-gradient(to right, #fcb48791, #dd5e888b);
-    
     --var2: #383838;
     --var3: #313030;
-    --var4: #87878745;
+    --var4: #8e8b8b4e;
+    --var5: #434242b3;
+    --var6: #7c79792d;
 }
-
-
-
-/* --var2: linear-gradient(115deg, #bd6bb9 0, #d68dd6 50%, #dc8de9 100%); */

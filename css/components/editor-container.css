@@ -1,12 +1,12 @@
 .editor-tools {
     flex-direction: column;
     justify-content: center;
-    background-color: var(--var3);
+    background-color: var(--var6);
     border-radius: 5rem;
     margin-left: 3rem;
-
+    -webkit-box-shadow: -1px 6px 16px -3px rgba(39, 37, 37, 0.8);
+    box-shadow: -1px 6px 16px -3px rgba(28, 27, 27, 0.8);
 }
-
 .editor-tools .tools {
     display: grid;
     justify-content: center;
@@ -14,59 +14,66 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 0.7rem;
 }
-
 .font-option {
     grid-column: span 3;
 }
-
 .editor-container .line-input {
     background-color: unset;
-    padding: 2rem;
+    padding: 1.3rem;
     border-radius: 2rem;
     text-align: center;
     margin-bottom: 1rem;
     font-size: 1rem;
     border: 1px solid var(--var4);
-    color: rgb(254, 254, 254);
+    background-color: rgba(255, 255, 255, 0.863);
+
     cursor: pointer;
-    width: 70%;
-
+    width: 90%;
+    -webkit-box-shadow: -1px 6px 16px -3px rgba(39, 37, 37, 0.8);
+    box-shadow: -1px 6px 16px -3px rgba(28, 27, 27, 0.8);
 }
-
 .line-editor {
     border-radius: 1rem;
     background-color: var(--var2);
     padding: 3px;
 }
-
 .editor-container {
     display: none;
     background-color: var(--var1);
     grid-template-columns: repeat(2, 1fr);
-
 }
-
-.editor-tools button {
+.editor-tools button, label, .download-btn {
     border: none;
     cursor: pointer;
     border-radius: 9px;
     font-size: 22px;
     height: 50px;
     width: 50px;
-    background-color: var(--var4)
+    background-color: rgba(255, 255, 255, 0.863);
+    -webkit-box-shadow: -1px 6px 16px -3px rgba(39, 37, 37, 0.8);
+    box-shadow: -1px 6px 16px -3px rgba(28, 27, 27, 0.8);
+}
+a.download-btn{
+    text-align: center;
+    font-family: sans-serif;
+
 }
 
-.editor-tools button:hover {
+.editor-tools button:hover ,label:hover {
     background-image: var(--var1);
 }
-
 .canvas-container {
     width: 500px;
     height: 500px;
     margin-top: 3rem;
     border: none;
 }
-
+.canvas{
+    -webkit-box-shadow: -1px 6px 16px -3px rgba(39, 37, 37, 0.8);
+    box-shadow: -1px 6px 16px -3px rgba(28, 27, 27, 0.8);
+    border-radius: 13px;
+    cursor: pointer;
+}
 input[type='color'] {
     -webkit-appearance: none;
     width: 50px;
@@ -78,19 +85,32 @@ input[type='color']::-webkit-color-swatch-wrapper {
     padding: 0;
 
 }
-
 input[type='color']::-webkit-color-swatch {
     border: none;
-
 }
 select {
-    background-color: var(--var4);
+    background-color: rgba(255, 255, 255, 0.863);
     background-position: right 10px center;
     background-size: auto 50%;
     border-radius: 2px;
     border: none;
-    color: #ffffff;
+    cursor: pointer;
+    border-radius: 9px;
+    font-size: 1.2rem;
     height: 50px;
-    /* padding: 5px 30px 10px 5px; */
-  }
-  
+}
+.tools  label {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 9px;
+    padding-top: 7px;
+}
+.tools .download-btn,
+.tools .save-btn {
+    grid-column: span 2;
+    width: 7.5rem;
+}
+

@@ -16,5 +16,5 @@ function onShowEditor(imgId) {
     document.querySelector('.main-content').style.display = 'none'
     document.querySelector('.editor-container').style.display = 'grid'
     setImg(imgId)
-    renderMeme()
+    resizeCanvas()
 }

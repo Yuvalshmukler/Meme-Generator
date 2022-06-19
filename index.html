@@ -22,72 +22,80 @@
                 </ul>
             </nav>
             <button class="menu" onclick="toggleMenu()">☰</button>
-
         </div>
     </header>
     </div>
-    
-<!--     <div class="search-input"> <input type="text" placeholder="Enter search keyword">
-    </div> -->
+    <!-- GALLERY ONLY -->
     <main class="main-content main-layout">
+
         <div class="gallery-container main-layout grid">
-
+            <div class="search-input"> <input type="text" placeholder="Enter search keyword">
+            </div>
         </div>
-
     </main>
-    <div class="info-conteiner">
-
-    </div>
     <footer>
-        <div class="footer-logo"></div>
+        <!-- <div class="footer-logo">GetMeme.</div> -->
     </footer>
-
-    <!-- editor area -->
+    <!-- EDITOR ONLY -->
     <div class="editor-container flex align-center main-layout justify-content">
         <div class="canvas-container grid">
-            <canvas class="canvas" id="myCanvas" width="500" height="500" style="border: 1px solid black;">
+            <canvas class="canvas" id="myCanvas" width="500" height="500">
             </canvas>
         </div>
         <div class="editor-tools">
             <input class="line-input" type="text" onclick="clearPlaceholder()" oninput="onInputText(this.value)"
                 placeholder="Enter your text here">
-                <div class="tools">
-            <!-- <div class="line-editor"> -->
-                <button onclick="onLineDown()"><i class="fa-solid fa-up-long"></i></button>
-                <button onclick="onLineUp()"><i class="fa-solid fa-down-long"></i></button>
-                <button onclick="onSwitchLines()">
+            <div class="tools">
+                <button onclick="onLineDown()" title="Take line down">
+                    <i class="fa-solid fa-up-long"></i></button>
+                <button onclick="onLineUp()" title="Take line up">
+                    <i class="fa-solid fa-down-long"></i></button>
+                <button onclick="onSwitchLines()" title="Switch between lines">
                     <i class="fa-solid fa-up-long"></i>
                     <i class="fa-solid fa-down-long"></i>
                 </button>
-                <button onclick="onAddLine()"><i class="fa-solid fa-plus"></i></button>
-                <button onclick="onDeleteLine()"><i class="fa-solid fa-trash"></i></button>
-            <!-- </div> -->
-            <!-- <div class="text-editor"> -->
-                <button onclick="onChangeFontSize(+10)">A+</button>
-                <!-- onclick="onChangeFontSize(-10)" -->
-                <button onclick="onChangeFontSize(-10)">A-</button>
-                <button onclick="onAlignLeft()"><i class="fa-solid fa-align-left"></i></button>
-                <button onclick="onAlignRight()"><i class="fa-solid fa-align-right"></i></button>
-                <button onclick="onAlignCenter()"><i class="fa-solid fa-align-justify"></i></button>
-            <!-- </div> -->
-            <!-- <div> -->
+                <button onclick="onAddLine()" title="Add line">
+                    <i class="fa-solid fa-plus"></i></button>
+                <button onclick="onDeleteLine()" title="Remove line">
+                    <i class="fa-solid fa-trash"></i></button>
+                <button onclick="onChangeFontSize(+10)" title="Decrease font size">A+</button>
+                <button onclick="onChangeFontSize(-10)" title="Increase font size">A-</button>
+                <button onclick="onAlignLeft()" title="Take line left">
+                    <i class="fa-solid fa-align-left"></i></button>
+                <button onclick="onAlignRight()" title="Take line right"><i
+                        class="fa-solid fa-align-right"></i></button>
+                <button onclick="onAlignCenter()" title="Take line to the middle"><i
+                        class="fa-solid fa-align-justify"></i></button>
                 <select name="" class="font-option" onclick="onChangeFontFamily(this.value)">
                     <option value="Impact">Impact</option>
                     <option value="Ariel">Ariel</option>
                     <option value="Lucida Sans">Lucida Sans</option>
                     <option value="Georgia">Georgia</option>
                 </select>
-                <input type="color" class="color-input" onchange="onChangeFillColor(this.value)">
-                <input type="color" class="color-input" onchange="onChangeStrokeColor(this.value)">
+                <label title="Change inner color">
+                    <i class="fa-solid fa-palette"></i>
+                    <input type="color" hidden class="color-input" onchange="onChangeFillColor(this.value)">
+                </label>
+                <label title="Change outline color">
+                    <i class="fa-solid fa-brush"></i>
+                    <input type="color" hidden class="color-input" onchange="onChangeStrokeColor(this.value)">
+                </label>
+                <button class="save-btn" onclick="uploadImg()">
+                    Save
+                </button>
+                <!-- <button class="upload-btn" onclick="onUploadImg()">Upload</button> -->
+                <a class="download-btn" onclick="onDownloadMeme(this)" download="my-meme.jpg">
+                    Download
+                </a>
             </div>
-            <!-- </div> -->
-
         </div>
     </div>
 </body>
 <script src="https://kit.fontawesome.com/fe6ae7baff.js" crossorigin="anonymous"></script>
 <script src="js/util.js"></script>
-<script src="js/meme-services.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/transition-functions.js"></script>
+<script src="js/services/meme-services.js"></script>
 <script src="js/gallery-controller.js"></script>
 <script src="js/meme-controller.js"></script>
 
