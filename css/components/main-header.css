@@ -42,11 +42,11 @@ ul li:first-child {
     background-color: unset;
     border-radius: 3rem;
     width: 5rem;
-    color: var(--var5);
+    color: var(--var3);
 }
 
 .main-header .menu {
-    background-color: var(--cr19);
+    background-color: var(--clr18);
     border: none;
     color: var(--var5);
     font-size: 1.7rem;
